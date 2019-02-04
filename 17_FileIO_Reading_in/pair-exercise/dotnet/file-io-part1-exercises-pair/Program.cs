@@ -9,7 +9,7 @@ namespace file_io_part1_exercises_pair
         {
             //Ask for a filesystem path for a test file
 
-            Console.Write("Please enter the path for a text file: ");
+            Console.WriteLine("Please enter the path for a text file: ");
             string filePath = Console.ReadLine();
 
             //string filePath = @"C:\workspace\team\week-4-pair-exercises-c-team-4\17_FileIO_Reading_in\pair-exercise\dotnet\alices_adventures_in_wonderland.txt";
@@ -17,43 +17,36 @@ namespace file_io_part1_exercises_pair
             // Read the content of the file
             try
             {
-                using(StreamReader sr = new StreamReader(filePath))
-                {
-                    int wordCount = 0;
-                    int sentenceCount = 0;
+                int wordCount = 0;
+                int sentenceCount = 0;
 
-                    
-                    while (!sr.EndOfStream)
-                    {
-                        char currentCharacter = (char)sr.Read();
+                string[] wordDelimiters = new string[] { " ", "\n", "\t", "\r"};
+                
+                string[] sentenceDelimiters = new string[] { "!", ".", "?" };
 
-                        // Determine the number of words (delimited by white space characters)
-                        if (currentCharacter.ToString() == " " || currentCharacter.ToString() == "/n")
-                        {
-                            wordCount++; 
-                        }
+                string passage = File.ReadAllText(filePath);
 
-                        // Determine the number of sentences (delimited by either a period, exclamation mark, or question mark
-                        else if (currentCharacter.ToString() == "!" || currentCharacter.ToString() == "." || currentCharacter.ToString() == "?") 
-                        {
-                            sentenceCount++;
-                        }
-                    }
 
-                    Console.WriteLine($"Word Count: {wordCount}");
-                    Console.WriteLine($"Sentence Count: {sentenceCount}");
+                string[] wordCountArray = passage.Split(wordDelimiters, StringSplitOptions.RemoveEmptyEntries);
 
-                }
+                wordCount = wordCountArray.Length;
+
+                string[] sentenceCountArray = passage.Split(sentenceDelimiters, StringSplitOptions.RemoveEmptyEntries);
+
+                sentenceCount = sentenceCountArray.Length;
+
+                Console.WriteLine($"\nWord Count: {wordCount}");
+                Console.WriteLine($"Sentence Count: {sentenceCount}");
+
+                Console.ReadKey();
             }
             catch (Exception)
             {
-                Console.WriteLine("File does not exist");
+                Console.WriteLine("\nFile does not exist");
                 Console.ReadKey();
             }
             // Print out the results
-
-
-            Console.ReadKey();
+   
         }
     }
 }
