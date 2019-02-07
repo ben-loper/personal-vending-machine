@@ -64,15 +64,14 @@ namespace CapstoneProject
 
 
         /// <summary>
-        /// Calls the static method in the Log class to read the items from the file and 
-        /// add it to the machine object
+        /// Loads items into machine object upon project start 
         /// </summary>
         private void LoadItems(VendingMachine machine)
         {
             string fullFilePath = Environment.CurrentDirectory + @"\..\..\..\..\..\etc\vendingmachine.csv";
 
-            Log.ReadItemsFromFile(fullFilePath, machine);
+            machine.LoadItemsFromFile(fullFilePath);
         }
-            
+
     }
 }

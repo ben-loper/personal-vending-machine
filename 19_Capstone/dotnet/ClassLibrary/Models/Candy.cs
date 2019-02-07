@@ -4,7 +4,11 @@ using System.Text;
 
 namespace CapstoneProject
 {
-    class Candy : VendingMachineItem
+    public class Candy : VendingMachineItem
     {
+        public Candy(string itemLocation, string itemName, decimal itemPrice) : base(itemLocation, itemName, itemPrice)
+        {
+
+        }
     }
 }
