@@ -20,5 +20,14 @@ namespace VendingMachineCLI
 
             Console.ReadKey();
         }
+
+
+
+
+        private void LoadItems()
+        {
+
+        }
+            
     }
 }
