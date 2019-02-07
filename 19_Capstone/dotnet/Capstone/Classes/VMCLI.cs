@@ -119,6 +119,7 @@ namespace CapstoneProject
                 else if (selection == 3)
                 {
                     quit = true;
+                    //Console.WriteLine($"Change provided: {qCount} quarter(s), {dCount} dime(s), and {nCount} nickel(s)");
                 }
             }
         }
