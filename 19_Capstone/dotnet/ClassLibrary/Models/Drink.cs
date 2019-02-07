@@ -6,7 +6,7 @@ namespace CapstoneProject
 {
     class Drink : VendingMachineItem
     {
-        public Drink(string itemLocation, string itemName, decimal itemPrice) : base(itemLocation, itemName, itemPrice)
+        public Drink(string itemName, decimal itemPrice) : base(itemName, itemPrice)
         {
 
         }

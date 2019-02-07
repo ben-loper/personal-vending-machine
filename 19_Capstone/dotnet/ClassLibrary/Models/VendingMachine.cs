@@ -9,7 +9,7 @@ namespace CapstoneProject
     public class VendingMachine
     {
         // Member Variables
-        public List<VendingMachineItem> ItemsInVendingMachine = new List<VendingMachineItem>();
+        public Dictionary<string, VendingMachineItem> ItemsInVendingMachine = new Dictionary<string, VendingMachineItem>();
 
         // Properties
         public decimal AvailableFunds { get; private set; } = 0;
@@ -30,7 +30,7 @@ namespace CapstoneProject
 
                         string[] item = line.Split("|");
 
-                        ItemsInVendingMachine.Add(CreateItem(item));
+                        ItemsInVendingMachine.Add(item[0], CreateItem(item));
                     }
 
                 }
@@ -52,19 +52,19 @@ namespace CapstoneProject
 
             if (item[3] == "Chip")
             {
-                 result = new Chip(item[0], item[1], decimal.Parse(item[2]));
+                 result = new Chip(item[1], decimal.Parse(item[2]));
             }
             else if (item[3] == "Candy")
             {
-                result = new Candy(item[0], item[1], decimal.Parse(item[2]));
+                result = new Candy(item[1], decimal.Parse(item[2]));
             }
             else if (item[3] == "Drink")
             {
-                result = new Drink(item[0], item[1], decimal.Parse(item[2]));
+                result = new Drink(item[1], decimal.Parse(item[2]));
             }
             else
             {
-                result = new Gum(item[0], item[1], decimal.Parse(item[2]));
+                result = new Gum(item[1], decimal.Parse(item[2]));
             }
 
             return result;
@@ -90,5 +90,6 @@ namespace CapstoneProject
                 AvailableFunds += 10;
             }
         }
+
     }
 }

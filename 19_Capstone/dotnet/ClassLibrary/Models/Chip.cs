@@ -7,7 +7,7 @@ namespace CapstoneProject
     class Chip : VendingMachineItem
     {
 
-        public Chip(string itemLocation, string itemName, decimal itemPrice) : base(itemLocation, itemName, itemPrice)
+        public Chip(string itemName, decimal itemPrice) : base(itemName, itemPrice)
         {
 
         }
