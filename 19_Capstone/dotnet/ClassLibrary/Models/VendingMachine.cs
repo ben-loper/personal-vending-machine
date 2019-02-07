@@ -93,7 +93,7 @@ namespace CapstoneProject
 
         public void PurchaseItem(string key)
         {
-            if (ItemsInVendingMachine[key].Quantity == "SOLD OUT")
+            if (ItemsInVendingMachine[key].Quantity == 0)
             {
                 throw new Exception($"{ItemsInVendingMachine[key]} is sold out");
             }
@@ -105,18 +105,8 @@ namespace CapstoneProject
 
         private void RemoveItem(string key)
         {
-            int quantity = int.Parse(ItemsInVendingMachine[key].Quantity);
+            ItemsInVendingMachine[key].Quantity--;
 
-            quantity -= 1;
-
-            if (quantity == 0)
-            {
-                ItemsInVendingMachine[key].Quantity = "SOLD OUT";
-            }
-            else
-            {
-                ItemsInVendingMachine[key].Quantity = quantity.ToString();
-            }
         }
 
         public void GetChange(decimal availableFunds)

@@ -9,7 +9,21 @@ namespace CapstoneProject
         
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string Quantity { get; set; } = "5";
+        public int Quantity { get; set; } = 5;
+        public string DisplayQuantity
+        {
+            get
+            {
+                string result = Quantity.ToString();
+
+                if(Quantity == 0)
+                {
+                    result = "SOLD OUT";
+                }
+
+                return result;
+            }
+        }
 
 
         public VendingMachineItem(string name, decimal price)

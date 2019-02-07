@@ -157,7 +157,7 @@ namespace CapstoneProject
 
         private static void PrintItem(VendingMachineItem item, string itemLocation)
         {
-            Console.WriteLine($"{itemLocation}".PadRight(20) + $"{item.Name}".PadRight(20) + $"{item.Price.ToString("C")}".PadRight(10) + $"{item.Quantity}");
+            Console.WriteLine($"{itemLocation}".PadRight(20) + $"{item.Name}".PadRight(20) + $"{item.Price.ToString("C")}".PadRight(10) + $"{item.DisplayQuantity}");
         }
 
     }
