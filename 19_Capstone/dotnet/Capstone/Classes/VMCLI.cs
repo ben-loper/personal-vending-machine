@@ -110,7 +110,10 @@ namespace CapstoneProject
                 }
                 else if (selection == 3)
                 {
+                    machine.GetChange(machine.AvailableFunds);
+
                     quit = true;
+
                     //Console.WriteLine($"Change provided: {qCount} quarter(s), {dCount} dime(s), and {nCount} nickel(s)");
                 }
             }

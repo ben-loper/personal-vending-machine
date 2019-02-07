@@ -139,5 +139,10 @@ namespace CapstoneProject
                 }
             }
         }
+
+        private void AddItemToCart(decimal price)
+        {
+
+        }
     }
 }
