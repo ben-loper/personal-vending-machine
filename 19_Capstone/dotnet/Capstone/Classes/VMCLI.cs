@@ -70,11 +70,16 @@ namespace CapstoneProject
         public void DisplayMenu(VendingMachine machine)
         {
             Console.Clear();
+
+            Console.WriteLine("Item Location".PadRight(20) + "Item Name".PadRight(20) + "Price".PadRight(10) + "Quantity");
+
             foreach (var item in machine.ItemsInVendingMachine)
             {
-                Console.WriteLine($"Location: {item.Key}\nName: {item.Value.Name}\nPrice: {item.Value.Price}\nQuantity: {item.Value.Quantity}\n");
-                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
+                PrintItem(machine.ItemsInVendingMachine[item.Key], item.Key);
             }
+
+            Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
+
             Console.ReadKey();
         }
 
@@ -137,6 +142,11 @@ namespace CapstoneProject
                     quit = true;
                 }
             }
+        }
+
+        private static void PrintItem(VendingMachineItem item, string itemLocation)
+        {
+            Console.WriteLine($"{itemLocation}".PadRight(20) + $"{item.Name}".PadRight(20) + $"{item.Price.ToString("C")}".PadRight(10) + $"{item.Quantity}");
         }
 
     }
