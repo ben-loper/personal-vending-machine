@@ -14,6 +14,8 @@ namespace CapstoneProject
 
             LoadItems(machine);
 
+            
+
             //(1) Display Vending Machine Items(2) Purchase(3) Exit
 
             bool quitMenu = false;
@@ -30,11 +32,11 @@ namespace CapstoneProject
 
                 if (selection == 1)
                 {
-                    DisplayMenu();
+                    DisplayMenu(machine);
                 }
                 else if (selection == 2)
                 {
-                    PurchaseMenu();
+                    PurchaseMenu(machine);
 
                 }
                 else if (selection == 3)
@@ -60,17 +62,22 @@ namespace CapstoneProject
         /// </summary>
         private void LoadItems(VendingMachine machine)
         {
-            string fullFilePath = Environment.CurrentDirectory + @"\..\..\..\..\..\etc\vendingmachine.csv";
+            string fullFilePath = Environment.CurrentDirectory + @"\..\..\..\..\etc\vendingmachine.csv";
 
             machine.LoadItemsFromFile(fullFilePath);
         }
 
-        public void DisplayMenu()
+        public void DisplayMenu(VendingMachine machine)
         {
-
+            Console.Clear();
+            foreach (var item in machine.ItemsInVendingMachine)
+            {
+                Console.WriteLine($"Location: {item.ItemLocation}\nName: {item.Name}\nPrice: {item.Price}\nQuantity: {item.Quantity}\n");
+            }
+            Console.ReadKey();
         }
 
-        public void PurchaseMenu()
+        public void PurchaseMenu(VendingMachine machine)
         {
             Console.Clear();
             Console.WriteLine("1) Feed Money");
@@ -84,11 +91,11 @@ namespace CapstoneProject
 
             if(selection == 1)
             {
-                FeedMoneyMenu();
+                FeedMoneyMenu(machine);
             }
             else if(selection == 2)
             {
-                DisplayMenu();
+                DisplayMenu(machine);
 
             }
             else if(selection == 3)
@@ -96,7 +103,7 @@ namespace CapstoneProject
 
             }
         }
-        public void FeedMoneyMenu()
+        public void FeedMoneyMenu(VendingMachine machine)
         {
             Console.Clear();
             Console.WriteLine("1) $1");
@@ -128,7 +135,7 @@ namespace CapstoneProject
             }
             else if (selection == 5)
             {
-                PurchaseMenu();
+                PurchaseMenu(machine);
             }
         }
 

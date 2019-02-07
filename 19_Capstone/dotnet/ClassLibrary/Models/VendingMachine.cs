@@ -8,7 +8,7 @@ namespace CapstoneProject
 {
     public class VendingMachine
     {
-        public List<VendingMachineItem> ItemsInVendingMachine { get; private set; }      
+        public List<VendingMachineItem> ItemsInVendingMachine = new List<VendingMachineItem>();      
 
         /// <summary>
         /// Given the full file path, reads the pipe delimited items in the file
@@ -20,30 +20,47 @@ namespace CapstoneProject
             {
                 using (StreamReader sr = new StreamReader(filePath))
                 {
-                    string line = sr.ReadLine();
+                    while (!sr.EndOfStream)
+                    {
+                        string line = sr.ReadLine();
 
-                    String[] items = line.Split("|");
+                        string[] item = line.Split("|");
 
+                        ItemsInVendingMachine.Add(CreateItem(item));
+                    }
 
                 }
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.Message);
+                Console.ReadKey();
             }
         }
 
-        private void CreateVendingMachineItems(List<VendingMachineItem> items)
+        public VendingMachineItem CreateItem(string [] item)
         {
-            foreach (VendingMachineItem item in items)
+            VendingMachineItem result;
+
+            if (item[3] == "Chip")
             {
-                
+                 result = new Chip(item[0], item[1], decimal.Parse(item[2]));
             }
-        }
+            else if (item[3] == "Candy")
+            {
+                result = new Candy(item[0], item[1], decimal.Parse(item[2]));
+            }
+            else if (item[3] == "Drink")
+            {
+                result = new Drink(item[0], item[1], decimal.Parse(item[2]));
+            }
+            else
+            {
+                result = new Gum(item[0], item[1], decimal.Parse(item[2]));
+            }
 
-        private void AddItemToListOfItems(VendingMachineItem item)
-        {
-            ItemsInVendingMachine.Add(item);
+            return result;
+
         }
     }
 }
