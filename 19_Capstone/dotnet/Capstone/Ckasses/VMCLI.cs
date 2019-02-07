@@ -8,6 +8,9 @@ namespace VendingMachineCLI
     {
         public void MainMenu()
         {
+            // Load items into vending machine
+
+
             //(1) Display Vending Machine Items(2) Purchase(3) Exit
 
 
