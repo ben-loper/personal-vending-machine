@@ -8,7 +8,11 @@ namespace CapstoneProject
 {
     public class VendingMachine
     {
-        public List<VendingMachineItem> ItemsInVendingMachine = new List<VendingMachineItem>();      
+        // Member Variables
+        public List<VendingMachineItem> ItemsInVendingMachine = new List<VendingMachineItem>();
+
+        // Properties
+        public decimal AvailableFunds { get; private set; } = 0;
 
         /// <summary>
         /// Given the full file path, reads the pipe delimited items in the file
@@ -38,6 +42,10 @@ namespace CapstoneProject
             }
         }
 
+        /// <summary>
+        /// Create a VendingMachineItem given array of strings from file
+        /// </summary>
+        /// <param name="item">Array of items from file</param>
         public VendingMachineItem CreateItem(string [] item)
         {
             VendingMachineItem result;
@@ -61,6 +69,26 @@ namespace CapstoneProject
 
             return result;
 
+        }
+
+        public void AddFunds(int selection)
+        {
+            if (selection == 1)
+            {
+                AvailableFunds += 1;
+            }
+            else if (selection == 2)
+            {
+                AvailableFunds += 2;
+            }
+            else if (selection == 3)
+            {
+                AvailableFunds += 5;
+            }
+            else if (selection == 4)
+            {
+                AvailableFunds += 10;
+            }
         }
     }
 }

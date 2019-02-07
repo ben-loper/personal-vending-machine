@@ -79,63 +79,61 @@ namespace CapstoneProject
 
         public void PurchaseMenu(VendingMachine machine)
         {
-            Console.Clear();
-            Console.WriteLine("1) Feed Money");
-            Console.WriteLine("2) Select Product");
-            //Display items
-            Console.WriteLine("3) Finish Transaction");
+            bool quit = false;
 
-            Console.WriteLine("Current Money Provided: (money left variable)");
-
-            int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 3);
-
-            if(selection == 1)
+            while (!quit)
             {
-                FeedMoneyMenu(machine);
-            }
-            else if(selection == 2)
-            {
-                DisplayMenu(machine);
+                Console.Clear();
+                Console.WriteLine("1) Feed Money");
+                Console.WriteLine("2) Select Product");
+                //Display items
+                Console.WriteLine("3) Finish Transaction");
 
-            }
-            else if(selection == 3)
-            {
+                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
 
+                int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 3);
+
+                if (selection == 1)
+                {
+                    FeedMoneyMenu(machine);
+                }
+                else if (selection == 2)
+                {
+                    DisplayMenu(machine);
+
+                }
+                else if (selection == 3)
+                {
+                    quit = true;
+                }
             }
         }
         public void FeedMoneyMenu(VendingMachine machine)
         {
-            Console.Clear();
-            Console.WriteLine("1) $1");
-            Console.WriteLine("2) $2");
-            Console.WriteLine("3) $5");
-            Console.WriteLine("4) $10");
-            Console.WriteLine("5) Back");
-            Console.WriteLine();
+            bool quit = false;
 
-            Console.WriteLine("Current Money Provided: (money left variable)");
-
-            int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 5);
-
-            if (selection == 1)
+            while (!quit)
             {
+                Console.Clear();
+                Console.WriteLine("1) $1");
+                Console.WriteLine("2) $2");
+                Console.WriteLine("3) $5");
+                Console.WriteLine("4) $10");
+                Console.WriteLine("5) Back");
+                Console.WriteLine();
 
-            }
-            else if (selection == 2)
-            {
+                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
 
-            }
-            else if (selection == 3)
-            {
+                int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 5);
 
-            }
-            else if (selection == 4)
-            {
-
-            }
-            else if (selection == 5)
-            {
-                PurchaseMenu(machine);
+                if (selection < 5)
+                {
+                    machine.AddFunds(selection);
+                }
+                else if (selection == 5)
+                {
+                    quit = true;
+                }
             }
         }
 
