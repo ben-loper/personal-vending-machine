@@ -73,6 +73,7 @@ namespace CapstoneProject
             foreach (var item in machine.ItemsInVendingMachine)
             {
                 Console.WriteLine($"Location: {item.Key}\nName: {item.Value.Name}\nPrice: {item.Value.Price}\nQuantity: {item.Value.Quantity}\n");
+                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
             }
             Console.ReadKey();
         }

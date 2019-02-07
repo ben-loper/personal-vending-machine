@@ -91,5 +91,15 @@ namespace CapstoneProject
             }
         }
 
+        public void PurchaseItem(string key)
+        {
+            RemoveItem(key);
+        }
+
+        private void RemoveItem(string key)
+        {
+            ItemsInVendingMachine[key].Quantity -= 1;
+        }
+
     }
 }
