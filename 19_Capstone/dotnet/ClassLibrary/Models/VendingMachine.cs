@@ -100,6 +100,8 @@ namespace CapstoneProject
             else
             {
                 RemoveItem(key);
+                AvailableFunds -= ItemsInVendingMachine[key].Price;
+
             }
         }
 

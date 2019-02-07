@@ -32,6 +32,9 @@ namespace CapstoneProject
             Price = price;
         }
 
+        public abstract string MakeSound();
+
+
 
     }
 }

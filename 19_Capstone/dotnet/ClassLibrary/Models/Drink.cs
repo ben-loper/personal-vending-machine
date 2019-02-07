@@ -10,5 +10,10 @@ namespace CapstoneProject
         {
 
         }
+
+        public override string MakeSound()
+        {
+            return "Glug Glug, Yum!";
+        }
     }
 }

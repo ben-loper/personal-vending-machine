@@ -76,7 +76,7 @@ namespace CapstoneProject
             {
                 Console.Clear();
 
-                Console.WriteLine("Item Location".PadRight(20) + "Item Name".PadRight(20) + "Price".PadRight(10) + "Quantity");
+                Console.WriteLine("Slot Location".PadRight(20) + "Product Name".PadRight(20) + "Price".PadRight(10) + "Quantity");
 
                 foreach (var item in machine.ItemsInVendingMachine)
                 {
@@ -85,9 +85,15 @@ namespace CapstoneProject
 
                 Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
 
-                machine.PurchaseItem("A1");
+                Console.WriteLine();
 
-            Console.ReadKey();
+                Console.Write("Select Slot Location: ");
+
+                string userSelection = Console.ReadLine();
+
+                machine.PurchaseItem(userSelection);
+                DispensedItemMenu(userSelection, machine);
+
             }
         }
 
@@ -158,6 +164,34 @@ namespace CapstoneProject
         private static void PrintItem(VendingMachineItem item, string itemLocation)
         {
             Console.WriteLine($"{itemLocation}".PadRight(20) + $"{item.Name}".PadRight(20) + $"{item.Price.ToString("C")}".PadRight(10) + $"{item.DisplayQuantity}");
+        }
+
+        public void DispensedItemMenu(string userSelection, VendingMachine machine)
+        {
+            bool quit = false;
+
+            while (!quit)
+            {
+                Console.Clear();
+                
+                Console.WriteLine($"{machine.ItemsInVendingMachine[userSelection].Name}");
+                
+                Console.WriteLine($"{machine.ItemsInVendingMachine[userSelection].Price.ToString("C")}");
+                
+                Console.WriteLine($"{machine.ItemsInVendingMachine[userSelection].MakeSound()}");
+
+                Console.Write("Push any button to go back to purchase menu...");
+
+                Console.ReadKey();
+
+                quit = true;
+            }
+
+
+
+            
+
+            
         }
 
     }
