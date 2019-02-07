@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VendingMachine.Models;
 
-namespace VendingMachine
+
+namespace CapstoneProject
 {
     public class VendingMachine
     {
-        public VendingMachineItem ItemsInVendingMachine { get; set; }
+        public List<VendingMachineItem> ItemsInVendingMachine { get; private set; }
+
+        public void AddItemToListOfItems(VendingMachineItem item)
+        {
+            ItemsInVendingMachine.Add(item);
+        }
     }
 }

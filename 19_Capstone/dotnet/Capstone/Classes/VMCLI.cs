@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VendingMachine.Models;
 
-namespace VendingMachineCLI
+
+namespace CapstoneProject
 {
     public class VMCLI
     {
         public void MainMenu()
         {
             // Load items into vending machine
+            VendingMachine machine = new VendingMachine();
 
+            LoadItems(machine);
 
             //(1) Display Vending Machine Items(2) Purchase(3) Exit
 
@@ -61,12 +63,15 @@ namespace VendingMachineCLI
 
 
 
-
-        private void LoadItems()
+        /// <summary>
+        /// Calls the static method in the Log class to read the items from the file and 
+        /// add it to the machine object
+        /// </summary>
+        private void LoadItems(VendingMachine machine)
         {
             string fullFilePath = Environment.CurrentDirectory + @"\..\..\..\..\..\etc\vendingmachine.csv";
 
-            Log.ReadItemsFromFile(fullFilePath);
+            Log.ReadItemsFromFile(fullFilePath, machine);
         }
             
     }

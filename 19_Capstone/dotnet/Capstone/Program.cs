@@ -1,7 +1,6 @@
 ﻿using System;
-using VendingMachineCLI;
 
-namespace Capstone
+namespace CapstoneProject
 {
     class Program
     {

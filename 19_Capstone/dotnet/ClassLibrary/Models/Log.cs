@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace VendingMachine.Models
+namespace CapstoneProject
 {
     public class Log
     {
@@ -31,10 +31,9 @@ namespace VendingMachine.Models
         
         private static void CreateVendingMachineItems(List<VendingMachineItem> items, VendingMachine machine)
         {
-
             foreach(VendingMachineItem item in items)
             {
-                item = new VendingMachineItem();
+                machine.AddItemToListOfItems(new VendingMachineItem());
             }
         }
             
