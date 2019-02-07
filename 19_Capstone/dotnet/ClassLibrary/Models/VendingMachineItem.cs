@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VendingMachine.Models
 {
-    class VendingMachineItem
+    public class VendingMachineItem
     {
         public string Name { get; set; }
         public decimal Price { get; set; }

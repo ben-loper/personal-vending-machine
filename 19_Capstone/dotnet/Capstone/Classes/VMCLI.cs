@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VendingMachine.Models;
 
 namespace VendingMachineCLI
 {
-    class VMCLI
+    public class VMCLI
     {
         public void MainMenu()
         {
@@ -63,7 +64,9 @@ namespace VendingMachineCLI
 
         private void LoadItems()
         {
+            string fullFilePath = Environment.CurrentDirectory + @"\..\..\..\..\..\etc\vendingmachine.csv";
 
+            Log.ReadItemsFromFile(fullFilePath);
         }
             
     }
