@@ -6,5 +6,14 @@ namespace VendingMachine.Models
 {
     class Chips : VendingMachineItem
     {
+
+
+        public Chips()
+        {
+
+        }
+
+
+
     }
 }
