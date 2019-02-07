@@ -47,6 +47,7 @@ namespace CapstoneProject
                 else if (selection == 4)
                 {
                     //Sales report
+                    
                 }
 
 
@@ -69,18 +70,25 @@ namespace CapstoneProject
 
         public void DisplayMenu(VendingMachine machine)
         {
-            Console.Clear();
+            bool quit = false;
 
-            Console.WriteLine("Item Location".PadRight(20) + "Item Name".PadRight(20) + "Price".PadRight(10) + "Quantity");
-
-            foreach (var item in machine.ItemsInVendingMachine)
+            while (!quit)
             {
-                PrintItem(machine.ItemsInVendingMachine[item.Key], item.Key);
-            }
+                Console.Clear();
 
-            Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
+                Console.WriteLine("Item Location".PadRight(20) + "Item Name".PadRight(20) + "Price".PadRight(10) + "Quantity");
+
+                foreach (var item in machine.ItemsInVendingMachine)
+                {
+                    PrintItem(machine.ItemsInVendingMachine[item.Key], item.Key);
+                }
+
+                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
+
+                machine.PurchaseItem("A1");
 
             Console.ReadKey();
+            }
         }
 
         public void PurchaseMenu(VendingMachine machine)

@@ -9,7 +9,7 @@ namespace CapstoneProject
         
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public int Quantity { get; set; } = 5;
+        public string Quantity { get; set; } = "5";
 
 
         public VendingMachineItem(string name, decimal price)
@@ -17,5 +17,7 @@ namespace CapstoneProject
             Name = name;
             Price = price;
         }
+
+
     }
 }

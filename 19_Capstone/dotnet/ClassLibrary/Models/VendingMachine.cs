@@ -93,12 +93,30 @@ namespace CapstoneProject
 
         public void PurchaseItem(string key)
         {
-            RemoveItem(key);
+            if (ItemsInVendingMachine[key].Quantity == "SOLD OUT")
+            {
+                throw new Exception($"{ItemsInVendingMachine[key]} is sold out");
+            }
+            else
+            {
+                RemoveItem(key);
+            }
         }
 
         private void RemoveItem(string key)
         {
-            ItemsInVendingMachine[key].Quantity -= 1;
+            int quantity = int.Parse(ItemsInVendingMachine[key].Quantity);
+
+            quantity -= 1;
+
+            if (quantity == 0)
+            {
+                ItemsInVendingMachine[key].Quantity = "SOLD OUT";
+            }
+            else
+            {
+                ItemsInVendingMachine[key].Quantity = quantity.ToString();
+            }
         }
 
     }
