@@ -91,8 +91,15 @@ namespace CapstoneProject
 
                 string userSelection = Console.ReadLine();
 
-                machine.PurchaseItem(userSelection);
-                DispensedItemMenu(userSelection, machine);
+                if(userSelection == "q")
+                {
+                    quit = true;
+                }
+                else
+                {
+                    machine.PurchaseItem(userSelection);
+                    DispensedItemMenu(userSelection, machine);
+                }
 
             }
         }
@@ -125,10 +132,12 @@ namespace CapstoneProject
                 else if (selection == 3)
                 {
                     machine.GetChange(machine.AvailableFunds);
+                    Console.WriteLine($"Change provided: {qCount} quarter(s), {dCount} dime(s), and {nCount} nickel(s)");
+
 
                     quit = true;
 
-                    //Console.WriteLine($"Change provided: {qCount} quarter(s), {dCount} dime(s), and {nCount} nickel(s)");
+                    
                 }
             }
         }

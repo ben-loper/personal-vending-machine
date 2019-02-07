@@ -116,6 +116,8 @@ namespace CapstoneProject
             const decimal quarter = .25M;
             int qCount = 0;
 
+            //dictionary
+
             const decimal dime = .10M;
             int dCount = 0;
 
@@ -148,11 +150,8 @@ namespace CapstoneProject
                     availableFunds -= nickel;
                 }
             }
-        }
 
-        private void AddItemToCart(decimal price)
-        {
-
+            //return dictionary
         }
     }
 }
