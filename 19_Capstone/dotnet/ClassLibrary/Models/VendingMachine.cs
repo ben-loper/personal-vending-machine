@@ -101,5 +101,43 @@ namespace CapstoneProject
             ItemsInVendingMachine[key].Quantity -= 1;
         }
 
+        public void GetChange(decimal availableFunds)
+        {
+            const decimal quarter = .25M;
+            int qCount = 0;
+
+            const decimal dime = .10M;
+            int dCount = 0;
+
+            const decimal nickel = .05M;
+            int nCount = 0;
+
+            while (availableFunds / quarter != 0)
+            {
+                if (availableFunds - quarter >= 0)
+                {
+                    qCount++;
+                    availableFunds -= quarter;
+                }
+            }
+
+            while (availableFunds / dime != 0)
+            {
+                if (availableFunds - dime >= 0)
+                {
+                    dCount++;
+                    availableFunds -= dime;
+                }
+            }
+
+            while (availableFunds / nickel != 0)
+            {
+                if (availableFunds - nickel >= 0)
+                {
+                    nCount++;
+                    availableFunds -= nickel;
+                }
+            }
+        }
     }
 }
