@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using VendingMachineCLI.Classes;
 
 namespace CapstoneProject
 {
@@ -26,24 +26,16 @@ namespace CapstoneProject
                 Console.WriteLine("3) Exit");
                 Console.WriteLine("4) Sales Report");
 
-                Console.ReadKey();
-
-                int selection = 0;
+                int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 4);
 
                 if (selection == 1)
                 {
-                    //Display items
+                    DisplayMenu();
                 }
                 else if (selection == 2)
                 {
+                    PurchaseMenu();
 
-                    Console.Clear();
-                    Console.WriteLine("1) Feed Money");
-                    Console.WriteLine("2) Select Product");
-                    //Display items
-                    Console.WriteLine("3) Finish Transaction");
-
-                    Console.WriteLine("Current Money Provided: (money left variable)");
                 }
                 else if (selection == 3)
                 {
@@ -73,6 +65,74 @@ namespace CapstoneProject
 
             Log.ReadItemsFromFile(fullFilePath, machine);
         }
-            
+
+        public void DisplayMenu()
+        {
+
+        }
+
+        public void PurchaseMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("1) Feed Money");
+            Console.WriteLine("2) Select Product");
+            //Display items
+            Console.WriteLine("3) Finish Transaction");
+
+            Console.WriteLine("Current Money Provided: (money left variable)");
+
+            int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 3);
+
+            if(selection == 1)
+            {
+                FeedMoneyMenu();
+            }
+            else if(selection == 2)
+            {
+                DisplayMenu();
+
+            }
+            else if(selection == 3)
+            {
+
+            }
+        }
+        public void FeedMoneyMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("1) $1");
+            Console.WriteLine("2) $2");
+            Console.WriteLine("3) $5");
+            Console.WriteLine("4) $10");
+            Console.WriteLine("5) Back");
+            Console.WriteLine();
+
+            Console.WriteLine("Current Money Provided: (money left variable)");
+
+            int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 5);
+
+            if (selection == 1)
+            {
+
+            }
+            else if (selection == 2)
+            {
+
+            }
+            else if (selection == 3)
+            {
+
+            }
+            else if (selection == 4)
+            {
+
+            }
+            else if (selection == 5)
+            {
+                PurchaseMenu();
+            }
+        }
+
+
     }
 }
