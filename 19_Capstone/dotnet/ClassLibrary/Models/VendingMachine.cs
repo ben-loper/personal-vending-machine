@@ -124,59 +124,35 @@ namespace CapstoneProject
 
             Dictionary<string, int> change = new Dictionary<string, int>();
 
+            change.Add("Quarter(s)", 0);
+            change.Add("Dime(s)", 0);
+            change.Add("Nickel(s)", 0);
+
             const decimal quarter = .25M;
             const decimal dime = .10M;
             const decimal nickel = .05M;
 
-
-            while(availableFunds != 0)
+            while (availableFunds != 0)
             {
-
-            }
-          
-
-            while (availableFunds >= quarter)
-            {
-
-                    if (change.ContainsKey("Quarter(s)"))
-                    {
-                        change["Quarter(s)"]++;
-                        availableFunds -= quarter;
-                    }
-                    else
-                    {
-                        change.Add("Quarter(s)", 1);
-                        availableFunds -= quarter;
-                    }
-            }
-
-            while (availableFunds >= dime)
-            {
-                    if (change.ContainsKey("Dime(s)"))
-                    {
-                        change["Dime(s)"]++;
-                        availableFunds -= dime;
-                    }
-                    else
-                    {
-                        change.Add("Dime(s)", 1);
-                        availableFunds -= quarter;
-                    }
-            }
-
-            while (availableFunds >= nickel)
-            {
-                if (change.ContainsKey("Nickel(s)"))
+                
+                if(availableFunds - quarter >= 0)
                 {
+                    availableFunds -= quarter;
+                    change["Quarter(s)"]++;
+                }
+                else if(availableFunds - dime >= 0)
+                {
+                    availableFunds -= dime;
+                    change["Dime(s)"]++;
+                }
+                else if (availableFunds - nickel >= 0)
+                {
+                    availableFunds -= nickel;
                     change["Nickel(s)"]++;
-                    availableFunds -= nickel;
-                }
-                else
-                {
-                    change.Add("Nickel(s)", 1);
-                    availableFunds -= nickel;
                 }
             }
+
+            AvailableFunds = 0;
 
             return change;
         }
