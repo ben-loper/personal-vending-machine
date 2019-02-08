@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-
+using VendingMachine.Exceptions;
 
 namespace CapstoneProject
 {
@@ -93,9 +93,17 @@ namespace CapstoneProject
 
         public void PurchaseItem(string key)
         {
-            if (ItemsInVendingMachine[key].Quantity == 0)
+            if (!ItemsInVendingMachine.ContainsKey(key))
             {
-                throw new Exception($"{ItemsInVendingMachine[key]} is sold out");
+                throw new InvalidSlotException("Invalid slot location entered");
+            }
+            else if (ItemsInVendingMachine[key].Quantity == 0)
+            {
+                throw new OutOfStockException($"{ItemsInVendingMachine[key].Name} is sold out");
+            }
+            else if (AvailableFunds - ItemsInVendingMachine[key].Price < 0)
+            {
+                throw new InsufficientFundsException("Insufficient funds available for item selected");
             }
             else
             {
