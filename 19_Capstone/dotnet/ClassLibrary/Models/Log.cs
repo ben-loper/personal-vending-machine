@@ -8,13 +8,13 @@ namespace CapstoneProject
     public abstract class Log
     {
 
-        public static void WriteFeedMoneyToLog(decimal amount)
+        public static void WriteFeedMoneyToLog(decimal amount, decimal resultAmount)
         {
             string logFileLocation = Environment.CurrentDirectory + @"\..\..\..\..\etc\Log.txt";
 
             using (StreamWriter sw = new StreamWriter(logFileLocation))
             {
-                sw.WriteLine(DateTime.Now);
+                sw.WriteLine(DateTime.Now + " FEED MONEY:" + $"{amount.ToString("C")}" + $"{resultAmount.ToString("C")}");
             } 
         }
 

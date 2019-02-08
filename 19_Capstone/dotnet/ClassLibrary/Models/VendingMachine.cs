@@ -95,7 +95,7 @@ namespace CapstoneProject
                 amountFed = 10;
             }
 
-            Log.WriteFeedMoneyToLog(amountFed);
+            Log.WriteFeedMoneyToLog(amountFed, AvailableFunds);
         }
 
         public void PurchaseItem(string key)
