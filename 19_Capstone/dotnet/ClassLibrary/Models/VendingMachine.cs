@@ -118,6 +118,7 @@ namespace CapstoneProject
             else
             {
                 Log.WritePurchaseToLog(ItemsInVendingMachine[key], AvailableFunds, key);
+
                 SalesReport.AddSaleToSalesReport(ItemsInVendingMachine[key].Name, _priceForItems);
 
                 RemoveItem(key);

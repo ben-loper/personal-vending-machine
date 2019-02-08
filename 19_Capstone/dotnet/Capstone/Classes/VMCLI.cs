@@ -32,7 +32,7 @@ namespace CapstoneProject
                 Console.WriteLine("1) Display Vending _machine Items");
                 Console.WriteLine("2) Purchase");
                 Console.WriteLine("3) Exit");
-                Console.WriteLine("4) Sales Report");
+                
 
                 Console.WriteLine();
 
@@ -52,12 +52,7 @@ namespace CapstoneProject
                     Console.Clear();
                     quitMenu = true;
                 }
-                else if (selection == 4)
-                {
-                    Console.Clear();
-                    //Console.WriteLine(SalesReport);
-                    Console.ReadKey();
-                }
+                
 
 
             }
