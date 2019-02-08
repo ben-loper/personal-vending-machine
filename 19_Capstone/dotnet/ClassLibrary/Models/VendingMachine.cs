@@ -10,6 +10,8 @@ namespace CapstoneProject
         // Member Variables
         public Dictionary<string, VendingMachineItem> ItemsInVendingMachine = new Dictionary<string, VendingMachineItem>();
 
+        private Dictionary<string, decimal> _priceForItems = new Dictionary<string, decimal>();
+
         // Properties
         public decimal AvailableFunds { get; private set; } = 0;
 
@@ -30,6 +32,7 @@ namespace CapstoneProject
                         string[] item = line.Split("|");
 
                         ItemsInVendingMachine.Add(item[0], CreateItem(item));
+                        _priceForItems.Add(item[1], decimal.Parse(item[2]));
                     }
 
                 }
@@ -115,6 +118,8 @@ namespace CapstoneProject
             else
             {
                 Log.WritePurchaseToLog(ItemsInVendingMachine[key], AvailableFunds, key);
+                SalesReport.AddSaleToSalesReport(ItemsInVendingMachine[key].Name, _priceForItems);
+
                 RemoveItem(key);
                 AvailableFunds -= ItemsInVendingMachine[key].Price;
 

@@ -17,10 +17,10 @@ namespace CapstoneProject
         public void MainMenu()
         {
             // Load items into vending _machine
-           
+
             LoadItems();
 
-            
+
 
             //(1) Display Vending _machine Items(2) Purchase(3) Exit
 
@@ -54,8 +54,9 @@ namespace CapstoneProject
                 }
                 else if (selection == 4)
                 {
-                    //Sales report
-                    
+                    Console.Clear();
+                    //Console.WriteLine(SalesReport);
+                    Console.ReadKey();
                 }
 
 
@@ -96,7 +97,7 @@ namespace CapstoneProject
 
                 Console.WriteLine($"Current Money Provided: {_machine.AvailableFunds.ToString("C")}");
 
-                
+
 
                 Console.Write("Select slot location or enter Q to return to the main menu: ");
 
@@ -173,7 +174,7 @@ namespace CapstoneProject
                     Console.WriteLine();
                     Console.WriteLine("\nChange received:");
                     Console.WriteLine();
-                    foreach(var item in _machine.GetChange())
+                    foreach (var item in _machine.GetChange())
                     {
                         Console.WriteLine($"{item.Value} {item.Key}");
                     }
@@ -182,7 +183,7 @@ namespace CapstoneProject
 
                     quit = true;
 
-                    
+
                 }
             }
         }
@@ -228,11 +229,11 @@ namespace CapstoneProject
             while (!quit)
             {
                 Console.Clear();
-                
+
                 Console.WriteLine($"{_machine.ItemsInVendingMachine[userSelection].Name}");
-                
+
                 Console.WriteLine($"{_machine.ItemsInVendingMachine[userSelection].Price.ToString("C")}");
-                
+
                 Console.WriteLine($"{_machine.ItemsInVendingMachine[userSelection].MakeSound()}\n");
 
                 Console.WriteLine($"Current Money Provided: {_machine.AvailableFunds.ToString("C")}");
@@ -246,9 +247,9 @@ namespace CapstoneProject
 
 
 
-            
 
-            
+
+
         }
 
     }
