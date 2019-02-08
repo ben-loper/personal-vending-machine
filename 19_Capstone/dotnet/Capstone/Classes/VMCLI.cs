@@ -131,9 +131,14 @@ namespace CapstoneProject
                 }
                 else if (selection == 3)
                 {
-                    machine.GetChange(machine.AvailableFunds);
-                    Console.WriteLine($"Change provided: {qCount} quarter(s), {dCount} dime(s), and {nCount} nickel(s)");
-
+                    Console.WriteLine();
+                    Console.WriteLine("\nChange received:");
+                    Console.WriteLine();
+                    foreach(var item in machine.GetChange(machine.AvailableFunds))
+                    {
+                        Console.WriteLine($"{item.Value} {item.Key}");
+                    }
+                    Console.ReadKey();
 
                     quit = true;
 
