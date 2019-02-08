@@ -120,6 +120,13 @@ namespace CapstoneProject
             const decimal dime = .10M;
             const decimal nickel = .05M;
 
+
+            while(availableFunds != 0)
+            {
+
+            }
+          
+
             while (availableFunds >= quarter)
             {
 
