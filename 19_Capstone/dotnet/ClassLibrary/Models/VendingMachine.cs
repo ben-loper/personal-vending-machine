@@ -72,22 +72,30 @@ namespace CapstoneProject
 
         public void AddFunds(int selection)
         {
+            decimal amountFed = 0;
+
             if (selection == 1)
             {
                 AvailableFunds += 1;
+                amountFed = 1;
             }
             else if (selection == 2)
             {
                 AvailableFunds += 2;
+                amountFed = 2;
             }
             else if (selection == 3)
             {
                 AvailableFunds += 5;
+                amountFed = 5;
             }
             else if (selection == 4)
             {
                 AvailableFunds += 10;
+                amountFed = 10;
             }
+
+            Log.WriteFeedMoneyToLog(amountFed);
         }
 
         public void PurchaseItem(string key)

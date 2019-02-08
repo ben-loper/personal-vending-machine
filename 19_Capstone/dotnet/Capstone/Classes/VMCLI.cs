@@ -65,9 +65,10 @@ namespace CapstoneProject
         /// </summary>
         private void LoadItems(VendingMachine machine)
         {
-            string fullFilePath = Environment.CurrentDirectory + @"\..\..\..\..\etc\vendingmachine.csv";
+            string fullFilePathLoadItems = Environment.CurrentDirectory + @"\..\..\..\..\etc\vendingmachine.csv";
 
-            machine.LoadItemsFromFile(fullFilePath);
+            machine.LoadItemsFromFile(fullFilePathLoadItems);
+
         }
 
         public void DisplayMenu(VendingMachine machine)
@@ -226,7 +227,9 @@ namespace CapstoneProject
                 
                 Console.WriteLine($"{machine.ItemsInVendingMachine[userSelection].Price.ToString("C")}");
                 
-                Console.WriteLine($"{machine.ItemsInVendingMachine[userSelection].MakeSound()}");
+                Console.WriteLine($"{machine.ItemsInVendingMachine[userSelection].MakeSound()}\n");
+
+                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
 
                 Console.Write("Push any button to go back to purchase menu...");
 

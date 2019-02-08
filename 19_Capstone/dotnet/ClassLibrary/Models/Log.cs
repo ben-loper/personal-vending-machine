@@ -5,10 +5,27 @@ using System.Text;
 
 namespace CapstoneProject
 {
-    public class Log
+    public abstract class Log
     {
 
-        
-            
+        public static void WriteFeedMoneyToLog(decimal amount)
+        {
+            string logFileLocation = Environment.CurrentDirectory + @"\..\..\..\..\etc\Log.txt";
+
+            using (StreamWriter sw = new StreamWriter(logFileLocation))
+            {
+                sw.WriteLine(DateTime.Now);
+            } 
+        }
+
+        public static void WritePurchaseToLog(string filePath)
+        {
+
+        }
+
+        public static void WriteMakeChangeToLog(string filePath)
+        {
+
+        }
     }
 }
