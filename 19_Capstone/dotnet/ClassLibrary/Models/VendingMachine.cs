@@ -114,8 +114,10 @@ namespace CapstoneProject
             }
             else
             {
+                Log.WritePurchaseToLog(ItemsInVendingMachine[key], AvailableFunds, key);
                 RemoveItem(key);
                 AvailableFunds -= ItemsInVendingMachine[key].Price;
+
 
             }
         }

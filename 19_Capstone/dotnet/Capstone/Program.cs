@@ -1,4 +1,5 @@
 ﻿using System;
+using VendingMachine.Exceptions;
 
 namespace CapstoneProject
 {
@@ -6,8 +7,20 @@ namespace CapstoneProject
     {
         static void Main(string[] args)
         {
-            VMCLI startUp = new VMCLI();
-            startUp.MainMenu();
+            try
+            {
+                VendingMachine machine = new VendingMachine();
+                VMCLI startUp = new VMCLI(machine);
+                startUp.MainMenu();
+            }
+            catch (InvalidInventoryException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Unable to create the machine object");
+                Console.WriteLine("The program will now close...");
+                Console.ReadKey();
+            }
+            
         }
     }
 }

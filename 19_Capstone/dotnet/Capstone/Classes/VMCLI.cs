@@ -7,23 +7,29 @@ namespace CapstoneProject
 {
     public class VMCLI
     {
+        private VendingMachine _machine;
+
+        public VMCLI(VendingMachine machine)
+        {
+            _machine = machine;
+        }
+
         public void MainMenu()
         {
-            // Load items into vending machine
-            VendingMachine machine = new VendingMachine();
-
-            LoadItems(machine);
+            // Load items into vending _machine
+           
+            LoadItems();
 
             
 
-            //(1) Display Vending Machine Items(2) Purchase(3) Exit
+            //(1) Display Vending _machine Items(2) Purchase(3) Exit
 
             bool quitMenu = false;
 
             while (!quitMenu)
             {
                 Console.Clear();
-                Console.WriteLine("1) Display Vending Machine Items");
+                Console.WriteLine("1) Display Vending _machine Items");
                 Console.WriteLine("2) Purchase");
                 Console.WriteLine("3) Exit");
                 Console.WriteLine("4) Sales Report");
@@ -34,11 +40,11 @@ namespace CapstoneProject
 
                 if (selection == 1)
                 {
-                    DisplayMenu(machine);
+                    DisplayMenu();
                 }
                 else if (selection == 2)
                 {
-                    PurchaseMenu(machine);
+                    PurchaseMenu();
 
                 }
                 else if (selection == 3)
@@ -61,17 +67,17 @@ namespace CapstoneProject
 
 
         /// <summary>
-        /// Loads items into machine object upon project start 
+        /// Loads items into _machine object upon project start 
         /// </summary>
-        private void LoadItems(VendingMachine machine)
+        private void LoadItems()
         {
             string fullFilePathLoadItems = Environment.CurrentDirectory + @"\..\..\..\..\etc\vendingmachine.csv";
 
-            machine.LoadItemsFromFile(fullFilePathLoadItems);
+            _machine.LoadItemsFromFile(fullFilePathLoadItems);
 
         }
 
-        public void DisplayMenu(VendingMachine machine)
+        public void DisplayMenu()
         {
             bool quit = false;
 
@@ -81,14 +87,14 @@ namespace CapstoneProject
 
                 Console.WriteLine("Slot Location".PadRight(20) + "Product Name".PadRight(20) + "Price".PadRight(10) + "Quantity");
 
-                foreach (var item in machine.ItemsInVendingMachine)
+                foreach (var item in _machine.ItemsInVendingMachine)
                 {
-                    PrintItem(machine.ItemsInVendingMachine[item.Key], item.Key);
+                    PrintItem(_machine.ItemsInVendingMachine[item.Key], item.Key);
                 }
 
                 Console.WriteLine("\n");
 
-                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
+                Console.WriteLine($"Current Money Provided: {_machine.AvailableFunds.ToString("C")}");
 
                 
 
@@ -104,8 +110,8 @@ namespace CapstoneProject
                     }
                     else
                     {
-                        machine.PurchaseItem(userSelection);
-                        DispensedItemMenu(userSelection, machine);
+                        _machine.PurchaseItem(userSelection);
+                        DispensedItemMenu(userSelection, _machine);
                     }
                 }
                 catch (InvalidSlotException ex)
@@ -132,7 +138,7 @@ namespace CapstoneProject
             }
         }
 
-        public void PurchaseMenu(VendingMachine machine)
+        public void PurchaseMenu()
         {
             bool quit = false;
 
@@ -146,7 +152,7 @@ namespace CapstoneProject
 
                 Console.WriteLine("\n");
 
-                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
+                Console.WriteLine($"Current Money Provided: {_machine.AvailableFunds.ToString("C")}");
 
                 Console.WriteLine("\n");
 
@@ -154,11 +160,11 @@ namespace CapstoneProject
 
                 if (selection == 1)
                 {
-                    FeedMoneyMenu(machine);
+                    FeedMoneyMenu();
                 }
                 else if (selection == 2)
                 {
-                    DisplayMenu(machine);
+                    DisplayMenu();
 
                 }
                 else if (selection == 3)
@@ -167,7 +173,7 @@ namespace CapstoneProject
                     Console.WriteLine();
                     Console.WriteLine("\nChange received:");
                     Console.WriteLine();
-                    foreach(var item in machine.GetChange())
+                    foreach(var item in _machine.GetChange())
                     {
                         Console.WriteLine($"{item.Value} {item.Key}");
                     }
@@ -181,7 +187,7 @@ namespace CapstoneProject
             }
         }
 
-        public void FeedMoneyMenu(VendingMachine machine)
+        public void FeedMoneyMenu()
         {
             bool quit = false;
 
@@ -195,13 +201,13 @@ namespace CapstoneProject
                 Console.WriteLine("5) Back");
                 Console.WriteLine("\n");
 
-                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
+                Console.WriteLine($"Current Money Provided: {_machine.AvailableFunds.ToString("C")}");
 
                 int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 5);
 
                 if (selection < 5)
                 {
-                    machine.AddFunds(selection);
+                    _machine.AddFunds(selection);
                 }
                 else if (selection == 5)
                 {
@@ -215,7 +221,7 @@ namespace CapstoneProject
             Console.WriteLine($"{itemLocation}".PadRight(20) + $"{item.Name}".PadRight(20) + $"{item.Price.ToString("C")}".PadRight(10) + $"{item.DisplayQuantity}");
         }
 
-        public void DispensedItemMenu(string userSelection, VendingMachine machine)
+        public void DispensedItemMenu(string userSelection, VendingMachine _machine)
         {
             bool quit = false;
 
@@ -223,13 +229,13 @@ namespace CapstoneProject
             {
                 Console.Clear();
                 
-                Console.WriteLine($"{machine.ItemsInVendingMachine[userSelection].Name}");
+                Console.WriteLine($"{_machine.ItemsInVendingMachine[userSelection].Name}");
                 
-                Console.WriteLine($"{machine.ItemsInVendingMachine[userSelection].Price.ToString("C")}");
+                Console.WriteLine($"{_machine.ItemsInVendingMachine[userSelection].Price.ToString("C")}");
                 
-                Console.WriteLine($"{machine.ItemsInVendingMachine[userSelection].MakeSound()}\n");
+                Console.WriteLine($"{_machine.ItemsInVendingMachine[userSelection].MakeSound()}\n");
 
-                Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
+                Console.WriteLine($"Current Money Provided: {_machine.AvailableFunds.ToString("C")}");
 
                 Console.Write("Push any button to go back to purchase menu...");
 
