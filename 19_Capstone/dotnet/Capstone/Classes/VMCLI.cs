@@ -29,7 +29,7 @@ namespace CapstoneProject
             while (!quitMenu)
             {
                 Console.Clear();
-                Console.WriteLine("1) Display Vending _machine Items");
+                Console.WriteLine("1) Display Vending Machine Items");
                 Console.WriteLine("2) Purchase");
                 Console.WriteLine("3) Exit");
                 Console.WriteLine("4) Sales Report");
