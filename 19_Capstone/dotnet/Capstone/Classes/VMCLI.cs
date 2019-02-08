@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using VendingMachineCLI.Classes;
+using VendingMachine.Exceptions;
 
 namespace CapstoneProject
 {
@@ -27,6 +28,8 @@ namespace CapstoneProject
                 Console.WriteLine("2) Purchase");
                 Console.WriteLine("3) Exit");
                 Console.WriteLine("4) Sales Report");
+
+                Console.WriteLine();
 
                 int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 4);
 
@@ -83,24 +86,49 @@ namespace CapstoneProject
                     PrintItem(machine.ItemsInVendingMachine[item.Key], item.Key);
                 }
 
+                Console.WriteLine("\n");
+
                 Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
 
-                Console.WriteLine();
+                
 
-                Console.Write("Select Slot Location: ");
+                Console.Write("Select slot location or enter Q to return to the main menu: ");
 
-                string userSelection = Console.ReadLine();
+                string userSelection = Console.ReadLine().ToUpper();
 
-                if(userSelection == "q")
+                try
                 {
-                    quit = true;
+                    if (userSelection.ToLower() == "q")
+                    {
+                        quit = true;
+                    }
+                    else
+                    {
+                        machine.PurchaseItem(userSelection);
+                        DispensedItemMenu(userSelection, machine);
+                    }
                 }
-                else
+                catch (InvalidSlotException ex)
                 {
-                    machine.PurchaseItem(userSelection);
-                    DispensedItemMenu(userSelection, machine);
+                    Console.Clear();
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("\nPress any key to return to the purchase menu...");
+                    Console.ReadKey();
                 }
-
+                catch (OutOfStockException ex)
+                {
+                    Console.Clear();
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("\nPress any key to return to the purchase menu...");
+                    Console.ReadKey();
+                }
+                catch (InsufficientFundsException ex)
+                {
+                    Console.Clear();
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("\nPress any key to return to the purchase menu...");
+                    Console.ReadKey();
+                }
             }
         }
 
@@ -116,7 +144,11 @@ namespace CapstoneProject
                 //Display items
                 Console.WriteLine("3) Finish Transaction");
 
+                Console.WriteLine("\n");
+
                 Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
+
+                Console.WriteLine("\n");
 
                 int selection = CLIHelper.GetSingleInteger("Select an option...", 1, 3);
 
@@ -132,7 +164,7 @@ namespace CapstoneProject
                 else if (selection == 3)
                 {
                     machine.GetChange(machine.AvailableFunds);
-                    Console.WriteLine($"Change provided: {qCount} quarter(s), {dCount} dime(s), and {nCount} nickel(s)");
+                   // Console.WriteLine($"Change provided: {qCount} quarter(s), {dCount} dime(s), and {nCount} nickel(s)");
 
 
                     quit = true;
@@ -141,6 +173,7 @@ namespace CapstoneProject
                 }
             }
         }
+
         public void FeedMoneyMenu(VendingMachine machine)
         {
             bool quit = false;
@@ -153,7 +186,7 @@ namespace CapstoneProject
                 Console.WriteLine("3) $5");
                 Console.WriteLine("4) $10");
                 Console.WriteLine("5) Back");
-                Console.WriteLine();
+                Console.WriteLine("\n");
 
                 Console.WriteLine($"Current Money Provided: {machine.AvailableFunds.ToString("C")}");
 
