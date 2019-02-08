@@ -17,7 +17,7 @@ namespace CapstoneProject
 
         public static void WritePurchaseToLog(VendingMachineItem item, decimal previousBalance, string location)
         {
-            WriteToLog($"\n{DateTime.Now}  ".PadRight(20) + $"{item.Name} {location}".PadRight(25) + $"{previousBalance.ToString("C")}".PadRight(10) + $"{(previousBalance - item.Price).ToString("C")}".PadRight(20));
+            WriteToLog($"{DateTime.Now}  ".PadRight(20) + $"{item.Name} {location}".PadRight(25) + $"{previousBalance.ToString("C")}".PadRight(10) + $"{(previousBalance - item.Price).ToString("C")}".PadRight(20));
         }
 
         public static void WriteMakeChangeToLog(decimal previousAmount)
