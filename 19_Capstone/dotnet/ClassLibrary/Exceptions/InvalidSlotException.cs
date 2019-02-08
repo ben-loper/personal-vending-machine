@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VendingMachine.Exceptions
+namespace CapstoneProject
 {
     public class InvalidSlotException : Exception
     {

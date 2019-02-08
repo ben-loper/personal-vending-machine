@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using VendingMachine.Exceptions;
 
 namespace CapstoneProject
 {
@@ -119,42 +118,13 @@ namespace CapstoneProject
 
         }
 
-        public Dictionary<string, int> GetChange(decimal availableFunds)
+        public Dictionary<string, int> GetChange()
         {
-
-            Dictionary<string, int> change = new Dictionary<string, int>();
-
-            change.Add("Quarter(s)", 0);
-            change.Add("Dime(s)", 0);
-            change.Add("Nickel(s)", 0);
-
-            const decimal quarter = .25M;
-            const decimal dime = .10M;
-            const decimal nickel = .05M;
-
-            while (availableFunds != 0)
-            {
-                
-                if(availableFunds - quarter >= 0)
-                {
-                    availableFunds -= quarter;
-                    change["Quarter(s)"]++;
-                }
-                else if(availableFunds - dime >= 0)
-                {
-                    availableFunds -= dime;
-                    change["Dime(s)"]++;
-                }
-                else if (availableFunds - nickel >= 0)
-                {
-                    availableFunds -= nickel;
-                    change["Nickel(s)"]++;
-                }
-            }
+            decimal amountToMakeChange = AvailableFunds;
 
             AvailableFunds = 0;
 
-            return change;
+            return Change.GetChangeWithNoDollars(amountToMakeChange);            
         }
     }
 }

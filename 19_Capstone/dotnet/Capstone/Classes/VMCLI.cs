@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using VendingMachineCLI.Classes;
-using VendingMachine.Exceptions;
 
 namespace CapstoneProject
 {
@@ -167,7 +166,7 @@ namespace CapstoneProject
                     Console.WriteLine();
                     Console.WriteLine("\nChange received:");
                     Console.WriteLine();
-                    foreach(var item in machine.GetChange(machine.AvailableFunds))
+                    foreach(var item in machine.GetChange())
                     {
                         Console.WriteLine($"{item.Value} {item.Key}");
                     }
