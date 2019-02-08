@@ -132,6 +132,8 @@ namespace CapstoneProject
         {
             decimal amountToMakeChange = AvailableFunds;
 
+            Log.WriteMakeChangeToLog(AvailableFunds);
+
             AvailableFunds = 0;
 
             return Change.GetChangeWithNoDollars(amountToMakeChange);            

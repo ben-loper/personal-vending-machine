@@ -12,17 +12,25 @@ namespace CapstoneProject
 
         public static void WriteFeedMoneyToLog(decimal amount, decimal resultAmount)
         {
-            File.AppendAllText(_logFileLocation, $"\n{DateTime.Now} FEED MONEY: {amount.ToString("C")}".PadRight(10) + $"{resultAmount.ToString("C")}");
+            WriteToLog($"{DateTime.Now} FEED MONEY: {amount.ToString("C")}".PadRight(10) + $"{resultAmount.ToString("C")}");
         }
 
         public static void WritePurchaseToLog(VendingMachineItem item, decimal previousBalance, string location)
         {
-            File.AppendAllText(_logFileLocation, $"\n{DateTime.Now} {item.Name} {location}  {previousBalance.ToString("C")}".PadRight(10) + $"{(previousBalance - item.Price).ToString("C")}");
+            WriteToLog($"\n{DateTime.Now} {item.Name} {location}  {previousBalance.ToString("C")}".PadRight(10) + $"{(previousBalance - item.Price).ToString("C")}");
         }
 
-        public static void WriteMakeChangeToLog(string filePath)
+        public static void WriteMakeChangeToLog(decimal previousAmount)
         {
+            WriteToLog($"\n{DateTime.Now} GIVE CHANGE: {previousAmount.ToString("C")}".PadRight(10) + $"$0.00");
+        }
 
+        public static void WriteToLog(string line)
+        {
+            using (StreamWriter sw = new StreamWriter(_logFileLocation, true))
+            {
+                sw.WriteLine(line);
+            }
         }
     }
 }
