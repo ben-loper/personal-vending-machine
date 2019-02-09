@@ -73,6 +73,11 @@ namespace CapstoneProject
 
         }
 
+
+        /// <summary>
+        /// Add funds to vending machine specified by user selection, creates log file item
+        /// </summary>
+        /// <param name="selection"></param>
         public void AddFunds(int selection)
         {
             decimal amountFed = 0;
@@ -101,6 +106,10 @@ namespace CapstoneProject
             Log.WriteFeedMoneyToLog(amountFed, AvailableFunds);
         }
 
+        /// <summary>
+        /// Purchase items from vending machine, creates log file item
+        /// </summary>
+        /// <param name="key"></param>
         public void PurchaseItem(string key)
         {
             if (!ItemsInVendingMachine.ContainsKey(key))
@@ -127,13 +136,21 @@ namespace CapstoneProject
 
             }
         }
-
+        /// <summary>
+        /// Decrement vending machine quantity
+        /// </summary>
+        /// <param name="key"></param>
         private void RemoveItem(string key)
         {
             ItemsInVendingMachine[key].Quantity--;
 
         }
 
+
+        /// <summary>
+        /// Calls static change class to return money to customer w/ smallest amount of coins
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, int> GetChange()
         {
             decimal amountToMakeChange = AvailableFunds;
