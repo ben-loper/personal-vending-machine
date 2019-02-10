@@ -13,6 +13,6 @@ Heavy|0
 U-Chews|0
 Little League Chew|0
 Chiclets|0
-Triplemint|5
+Triplemint|10
 
-**TOTAL SALES** $77.30
+**TOTAL SALES** $81.05
