@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VendingMachine.Utility;
 using VendingMachineCLI.Classes;
 
 namespace CapstoneProject
@@ -206,6 +207,7 @@ namespace CapstoneProject
                 if (selection < 5)
                 {
                     _machine.AddFunds(selection);
+                    Sound.PlaySound("AddChange.wav");
                 }
                 else if (selection == 5)
                 {
