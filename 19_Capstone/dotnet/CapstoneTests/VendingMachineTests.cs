@@ -53,7 +53,7 @@ namespace CapstoneTests
         }
 
         [TestMethod]
-        public void SelectItemInValidLocation()
+        public void SelectItemValidLocation()
         {
             _machine.AddFunds(4);
 
