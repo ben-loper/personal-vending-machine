@@ -18,10 +18,13 @@ namespace CapstoneProject
 
                 if(Quantity == 0)
                 {
-                    result = "SOLD OUT";
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    string result1 = "SOLD OUT";
+                    return result1;
                 }
 
                 return result;
+
             }
         }
 

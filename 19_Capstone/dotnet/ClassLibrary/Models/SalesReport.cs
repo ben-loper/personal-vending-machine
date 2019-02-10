@@ -9,8 +9,11 @@ namespace CapstoneProject
     {
         private static string _salesReportLocation = Environment.CurrentDirectory + @"\..\..\..\..\etc\SalesReport.txt";
 
-        // Given the item name and list of items with prices, load report, modify the amount sold
-
+        /// <summary>
+        /// Given the item name and list of items with prices, load report, modify the amount sold
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <param name="itemPrices"></param>
         public static void AddSaleToSalesReport(string itemName, Dictionary<string, decimal> itemPrices)
         {
 
@@ -27,8 +30,12 @@ namespace CapstoneProject
 
         }
 
-        // Loads the report, returns the list of items as a dictionary with the quantities sold 
 
+        /// <summary>
+        /// Loads the report, returns the list of items as a dictionary with the quantities sold
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
         private static Dictionary<string, int> LoadReport(List<string> items)
         {
             Dictionary<string, int> reportData = new Dictionary<string, int>();
@@ -64,7 +71,11 @@ namespace CapstoneProject
             return reportData;
         }
 
-        
+        /// <summary>
+        /// Given two dictionaries containing price and quantity, rewrite file including total sales number
+        /// </summary>
+        /// <param name="itemsQuantity"></param>
+        /// <param name="itemPrices"></param>
         private static void SaveReport(Dictionary<string, int> itemsQuantity, Dictionary<string, decimal> itemPrices)
         {
             decimal totalSales = 0;
