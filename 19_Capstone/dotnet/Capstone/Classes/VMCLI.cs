@@ -18,7 +18,8 @@ namespace CapstoneProject
         public void MainMenu()
         {
             Console.WriteLine(SplashScreen.StartupScreen());
-            Console.WriteLine("Ben Loper | John Wunderle");
+            Console.WriteLine("Developed by: Ben Loper | John Wunderle");
+            Console.WriteLine("With the assistance and direction of THE Chris Rupp");
             System.Threading.Thread.Sleep(2000);
 
 
@@ -89,7 +90,6 @@ namespace CapstoneProject
             {
                 Console.Clear();
 
-                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Slot Location".PadRight(20) + "Product Name".PadRight(20) + "Price".PadRight(10) + "Quantity");
 
                 foreach (var item in _machine.ItemsInVendingMachine)
@@ -225,7 +225,18 @@ namespace CapstoneProject
 
         private static void PrintItem(VendingMachineItem item, string itemLocation)
         {
-            Console.WriteLine($"{itemLocation}".PadRight(20) + $"{item.Name}".PadRight(20) + $"{item.Price.ToString("C")}".PadRight(10) + $"{item.DisplayQuantity}");
+            if (item.DisplayQuantity == "SOLD OUT")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine($"{itemLocation}".PadRight(20) + $"{item.Name}".PadRight(20) + $"{item.Price.ToString("C")}".PadRight(10) + $"{item.DisplayQuantity}");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+
+                Console.WriteLine($"{itemLocation}".PadRight(20) + $"{item.Name}".PadRight(20) + $"{item.Price.ToString("C")}".PadRight(10) + $"{item.DisplayQuantity}");
+            }
         }
 
         public void DispensedItemMenu(string userSelection, VendingMachine _machine)

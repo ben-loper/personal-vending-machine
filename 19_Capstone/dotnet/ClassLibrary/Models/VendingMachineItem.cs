@@ -9,7 +9,7 @@ namespace CapstoneProject
         
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public int Quantity { get; set; } = 5;
+        public int Quantity { get; set; } = 1;
         public string DisplayQuantity
         {
             get
@@ -18,9 +18,7 @@ namespace CapstoneProject
 
                 if(Quantity == 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    string result1 = "SOLD OUT";
-                    return result1;
+                    result = "SOLD OUT";
                 }
 
                 return result;
