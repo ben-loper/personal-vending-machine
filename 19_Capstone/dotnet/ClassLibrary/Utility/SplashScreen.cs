@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace VendingMachine.Utility
+namespace CapstoneProject
 {
     public static class SplashScreen
     {

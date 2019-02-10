@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VendingMachine.Utility;
 using VendingMachineCLI.Classes;
 
 namespace CapstoneProject
@@ -19,7 +18,7 @@ namespace CapstoneProject
         {
             Console.WriteLine(SplashScreen.StartupScreen());
             Console.WriteLine("Developed by: Ben Loper | John Wunderle");
-            Console.WriteLine("With the assistance and direction of THE Chris Rupp");
+            Console.WriteLine("\nUnder the instructions and direction of Chris Rupp");
             System.Threading.Thread.Sleep(2000);
 
 
@@ -41,7 +40,7 @@ namespace CapstoneProject
                 Console.WriteLine("1) Display Vending Machine Items");
                 Console.WriteLine("2) Purchase");
                 Console.WriteLine("3) Exit");
-                
+
 
                 Console.WriteLine();
 
@@ -61,7 +60,7 @@ namespace CapstoneProject
                     Console.Clear();
                     quitMenu = true;
                 }
-                
+
 
 
             }

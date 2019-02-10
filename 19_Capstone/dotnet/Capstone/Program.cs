@@ -1,5 +1,4 @@
 ﻿using System;
-using VendingMachine.Exceptions;
 
 namespace CapstoneProject
 {
