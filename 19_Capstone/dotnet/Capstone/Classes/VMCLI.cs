@@ -81,6 +81,7 @@ namespace CapstoneProject
             {
                 Console.Clear();
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Slot Location".PadRight(20) + "Product Name".PadRight(20) + "Price".PadRight(10) + "Quantity");
 
                 foreach (var item in _machine.ItemsInVendingMachine)
@@ -88,6 +89,7 @@ namespace CapstoneProject
                     PrintItem(_machine.ItemsInVendingMachine[item.Key], item.Key);
                 }
 
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("\n");
 
                 Console.WriteLine($"Current Money Provided: {_machine.AvailableFunds.ToString("C")}");
