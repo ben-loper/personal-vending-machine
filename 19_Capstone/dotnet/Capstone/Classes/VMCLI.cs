@@ -17,6 +17,11 @@ namespace CapstoneProject
 
         public void MainMenu()
         {
+            Console.WriteLine(SplashScreen.StartupScreen());
+            Console.WriteLine("Ben Loper | John Wunderle");
+            System.Threading.Thread.Sleep(2000);
+
+
             // Load items into vending _machine
 
             LoadItems();
@@ -24,6 +29,8 @@ namespace CapstoneProject
 
 
             //(1) Display Vending _machine Items(2) Purchase(3) Exit
+
+
 
             bool quitMenu = false;
 
