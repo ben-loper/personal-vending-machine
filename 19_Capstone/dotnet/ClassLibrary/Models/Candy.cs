@@ -13,6 +13,7 @@ namespace CapstoneProject
 
         public override string MakeSound()
         {
+            Sound.PlaySound("Candy.wav");
             return "Munch Munch, Yum!";
         }
     }

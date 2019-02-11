@@ -14,6 +14,7 @@ namespace CapstoneProject
 
         public override string MakeSound()
         {
+            Sound.PlaySound("Chips.wav");
             return "Crunch Crunch, Yum!";
         }
     }
