@@ -12,6 +12,10 @@ namespace CapstoneProject
 
         }
 
+        /// <summary>
+        /// Provides sound, overridden by each of the vending machine item subclasses
+        /// </summary>
+        /// <returns></returns>
         public override string MakeSound()
         {
             Sound.PlaySound("Chips.wav");

@@ -33,6 +33,11 @@ namespace CapstoneProject
             Price = price;
         }
 
+
+        /// <summary>
+        /// Provides sound, overridden by each of the vending machine item subclasses
+        /// </summary>
+        /// <returns></returns>
         public abstract string MakeSound();
 
 
